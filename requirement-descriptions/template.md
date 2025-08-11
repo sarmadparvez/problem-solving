@@ -4,7 +4,8 @@
 [Clear problem statement]
 
 ## Algorithm Explanation
-[Explain how the algorithm or solution works. Include steps, logic, and complexity analysis.]
+[Explain how the algorithm or solution works. Include steps, logic, and complexity analysis.  
+When possible, illustrate the algorithm with a concrete example or a visual diagram to clarify the approach.]
 
 ## Function Signature
 

@@ -22,7 +22,7 @@ const binarySearch = (data: number[], searchInput: number): number => {
 
     if (data[mid] === searchInput) {
       return mid;
-    } else if (data[mid] < searchInput) {
+    } else if (searchInput > data[mid]) {
       left = mid + 1;
     } else {
       right = mid - 1;
