@@ -50,6 +50,9 @@ npm run test:watch          # re-run tests on file changes
 
 There are two ways to run a file — pick whichever you prefer.
 
+> Note: solution files only **export** a function, so running one directly (either way below) prints
+> nothing — add a temporary `console.log` to see output, or just use `npm test` to exercise them.
+
 ## Running a `.ts` file directly (no compile)
 
 Run a `.ts` file straight through `tsx` (installed as a dev dependency) — no build step:
@@ -59,9 +62,6 @@ npm run ts src/two-sum.ts
 ```
 
 `npm run ts` maps to `tsx`, so it also works via `npx tsx src/two-sum.ts`.
-
-> Note: solution files only **export** a function, so running one directly prints nothing — add a
-> temporary `console.log` to see output, or just use `npm test` to exercise them.
 
 ## Compiling to JavaScript, then running
 

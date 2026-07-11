@@ -30,7 +30,8 @@ Turn a worked-out approach into code. Implement `src/<slug>.ts` and its tests fr
    - Solution as a typed `const <fnName> = (...) => { ... }` arrow function.
    - End with `export default <fnName>;`.
 4. Write `tests/<slug>.test.ts` (expected outputs derived from the problem spec, not from what the
-   code happens to return):
+   code happens to return). If it already exists (e.g. from a prior `/test-problem <slug>` run), tell
+   the user and confirm before overwriting it:
    - `import <fnName> from '../src/<slug>';`
    - One `describe('<fnName>', ...)` with multiple `it(...)` cases covering the spec examples, edge
      cases (empty input, single element, negatives, no-match, etc.), and adversarial cases that try

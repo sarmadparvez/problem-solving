@@ -34,7 +34,9 @@ and independent of whatever the code happens to do, so they can actually catch a
    - Adversarial cases meant to **break** the solution: tricky orderings, overlaps/ties, large
      inputs, off-by-one boundaries, and anything the constraints permit but a naive solution mishandles.
    Compute each expected output yourself from the problem definition.
-4. Write `tests/<slug>.test.ts`:
+4. Write `tests/<slug>.test.ts`. If it already exists (e.g. from a prior `/implement-solution <slug>`
+   run), tell the user it will be replaced with spec-derived black-box tests and confirm before
+   overwriting it:
    - `import <fnName> from '../src/<slug>';`
    - One `describe('<fnName>', ...)` with grouped `it(...)` cases (examples, edge cases, adversarial).
    - `.toBe(...)` for primitives, `.toEqual(...)` for arrays/objects.

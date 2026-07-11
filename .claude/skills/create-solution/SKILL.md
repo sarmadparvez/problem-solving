@@ -19,7 +19,8 @@ This produces the **approach**, not the TypeScript. Use it after `/create-proble
 ## Steps
 
 1. Read `problems/<slug>.md` (the statement). If it does not exist, stop and suggest
-   `/create-problem <slug>` first.
+   `/create-problem <slug>` first. If `solutions/<slug>.md` already exists, tell the user and confirm
+   before overwriting it.
 2. Explain the approach in the chat, then write it to `solutions/<slug>.md` from
    `solutions/template.md` with these sections:
    - **Intuition** — the key insight and why the approach works; connect it to the problem's shape.
