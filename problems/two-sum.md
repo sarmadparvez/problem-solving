@@ -7,9 +7,6 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
-## Algorithm Explanation
-Use a hash map to store each number's value and its index as you iterate through the array. For each element, check if `target - nums[i]` exists in the map. If it does, return the indices. This approach achieves O(n) time complexity and O(n) space complexity.
-
 ## Function Signature
 
 ```typescript

@@ -1,10 +1,12 @@
 {
   "name": "typescript-snippets",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A collection of coding problems solved in TypeScript for coding practice and improving problem-solving skills.",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "ts": "tsx",
+    "start": "sh -c 'f=\"${1%.ts}\"; f=\"${f#src/}\"; tsc \"src/$f.ts\" --outDir dist --rootDir . --target esnext --module commonjs --esModuleInterop --strict --skipLibCheck && node \"dist/src/$f.js\"' _"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
     "@types/jest": "^30.0.0",
     "jest": "^30.0.5",
     "ts-jest": "^29.4.1",
+    "tsx": "^4.23.0",
     "typescript": "^5.9.2"
   }
 }

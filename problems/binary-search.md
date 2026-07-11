@@ -3,17 +3,6 @@
 ## Description
 Given a sorted array of integers and a target value, implement binary search to find the target. Return the index if found, otherwise return -1.
 
-## Algorithm Explanation
-Binary search works by repeatedly dividing the search interval in half.  
-- Start with the entire array.
-- Compare the middle element to the target.
-- If the middle element is equal to the target, return its index.
-- If the target is less than the middle element, repeat the search on the left half.
-- If the target is greater, repeat the search on the right half.
-- Continue until the target is found or the interval is empty.
-
-This approach has a time complexity of O(log n).
-
 ## Function Signature
 ```typescript
 const binarySearch = (data: number[], searchInput: number): number => {
