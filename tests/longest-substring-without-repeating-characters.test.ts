@@ -17,7 +17,7 @@ describe('lengthOfLongestSubstring', () => {
     expect(lengthOfLongestSubstring('')).toBe(0);
   });
 
-  it('returns 5 for "abcdef"', () => {
+  it('returns 6 for "abcdef"', () => {
     expect(lengthOfLongestSubstring('abcdef')).toBe(6);
   });
 

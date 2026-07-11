@@ -32,14 +32,14 @@
 const mergeIntervals = (intervals: number[][]): number[][] => {
   if (intervals.length <= 1) return intervals;
 
-  // Sort intervals by prevStart time
-  intervals.sort((a, b) => a[0] - b[0]);
+  // Sort a copy by start time so the caller's array is not mutated
+  const sorted = [...intervals].sort((a, b) => a[0] - b[0]);
 
   const merged: number[][] = [];
-  let [prevStart, prevEnd] = intervals[0];
+  let [prevStart, prevEnd] = sorted[0];
 
-  for (let i = 1; i < intervals.length; i++) {
-    const [currStart, currEnd] = intervals[i];
+  for (let i = 1; i < sorted.length; i++) {
+    const [currStart, currEnd] = sorted[i];
     if (currStart <= prevEnd) {
       // Overlapping intervals, merge
       prevEnd = Math.max(prevEnd, currEnd);
