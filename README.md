@@ -1,4 +1,4 @@
-# typescript-snippets
+# problem-solving
 
 A personal collection of coding problems solved in TypeScript, for **coding practice** — sharpening
 problem-solving and data-structures/algorithms skills.
