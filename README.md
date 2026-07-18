@@ -95,6 +95,8 @@ standard). Invoke as slash commands, in workflow order:
 | `/create-solution <slug>`   | Work out the best approach (intuition, algorithm, visual dry run, complexity, pitfalls) and write it to `solutions/<slug>.md`, so you can understand it and code it yourself. Writes no TypeScript. |
 | `/implement-solution <slug>`| Implement `src/<slug>.ts` and `tests/<slug>.test.ts` from the approach in `solutions/<slug>.md` (falls back to `problems/<slug>.md`), then run the tests. |
 | `/test-problem <slug>`      | Write comprehensive **black-box** tests from `problems/<slug>.md` alone (examples, edge cases, adversarial cases) and run them against your `src/<slug>.ts`. Never reads or changes your code. |
+| `/reset-implementation <slug>` | Blank out an existing `src/<slug>.ts`: comment out the current implementation (kept for reference, hidden below a whitespace gap) and leave an empty function with the same signature to re-attempt from scratch. |
+| `/revert-implementation <slug>` | Undo a `/reset-implementation`: restore the original `src/<slug>.ts` from the commented reference block at the bottom of the file (discarding the stub). Targeted — leaves other uncommitted changes alone. |
 
 See [`AGENTS.md`](./AGENTS.md) for the full conventions.
 

@@ -41,6 +41,14 @@ Copilot CLI (and Copilot in VS Code). No per-tool duplication:
   tests (`tests/<slug>.test.ts`) derived only from `problems/<slug>.md` — examples, edge cases, and
   adversarial cases — then runs them against `src/<slug>.ts` and reports pass/fail. Never reads or
   changes the solution code.
+- **`reset-implementation <slug>`** — the "re-attempt from scratch" step. Comments out the existing
+  `src/<slug>.ts` implementation (kept in-file for reference, pushed below a whitespace gap) and
+  leaves a placeholder function with the same signature — complexity hints stripped — so I can solve
+  it again without seeing my old answer. Touches only `src/<slug>.ts`.
+- **`revert-implementation <slug>`** — the opposite of `reset-implementation`. Restores the original
+  `src/<slug>.ts` from the commented reference block the reset left at the bottom of the file and
+  drops the placeholder stub. Targeted — reconstructs from the file itself, so it leaves other
+  uncommitted changes untouched (no repo-wide `git reset`). Touches only `src/<slug>.ts`.
 
 ## Folder Structure
 
