@@ -33,7 +33,33 @@ we sweep left to right, extending `prev` while intervals touch:
 
 ## Complexity
 - Time: O(n log n) due to sorting.
-- Space: O(n) for storing the result.
+- Space: O(n) for the sorted copy and the result.
+
+### Why — reading the big-O
+
+**What `log n` means.** In algorithm analysis `log n` is log base 2: how many times you can halve
+`n` before reaching 1 (equivalently, the power you raise 2 to in order to get `n`). It grows very
+slowly — `log₂(1,000,000) ≈ 20` — and shows up whenever work repeatedly *halves* something or has the
+shape of a balanced tree of depth `log n`.
+
+**What `n log n` means.** `log n` work done `n` times — the signature cost of comparison sorting.
+Merge sort makes it visual: splitting the array in half repeatedly gives `log n` levels; merging back
+touches all `n` elements at each level, so `n` per level × `log n` levels = `n log n`. (This is also a
+proven lower bound — no comparison sort beats it in the worst case.)
+
+**Why this problem is `O(n log n)`.** Two phases:
+- Sort by start value → `O(n log n)` (the dominant cost).
+- One left-to-right sweep, each interval visited once → `O(n)`.
+
+Total `O(n log n) + O(n)`; big-O keeps only the fastest-growing term, so it collapses to
+`O(n log n)`. It is `n log n` and not `n` purely because of the required sort.
+
+**Why the space is `O(n)`.** Beyond the input we allocate: the `[...intervals]` copy (made so the
+caller's array is not mutated) → `O(n)`; the `output` list, which holds up to `n` intervals when none
+overlap → `O(n)`; the sort's internal buffer (V8's Timsort) → up to `O(n)`; plus a few scalar
+variables → `O(1)`. The largest term wins → `O(n)`. Note the copy is a deliberate trade: sorting in
+place would drop auxiliary space toward `O(log n)` (recursion-stack depth) but would mutate the
+caller's array.
 
 ## Pitfalls & Edge Cases
 - Sort by start first — the single sweep is only correct on start-sorted input.

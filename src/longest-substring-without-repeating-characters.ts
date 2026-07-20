@@ -29,4 +29,3 @@ const lengthOfLongestSubstring = (s: string): number => {
 };
 
 export default lengthOfLongestSubstring;
-

@@ -28,5 +28,27 @@ describe('mergeIntervals', () => {
   it('handles unsorted input', () => {
     expect(mergeIntervals([[8,10],[1,3],[2,6],[15,18]])).toEqual([[1,6],[8,10],[15,18]]);
   });
+
+  it('handles negative coordinates', () => {
+    expect(mergeIntervals([[-5,-1],[-3,0],[2,4]])).toEqual([[-5,0],[2,4]]);
+  });
+
+  it('merges duplicate identical intervals', () => {
+    expect(mergeIntervals([[1,3],[1,3],[1,3]])).toEqual([[1,3]]);
+  });
+
+  it('merges intervals with equal start but different ends', () => {
+    expect(mergeIntervals([[1,4],[1,5]])).toEqual([[1,5]]);
+  });
+
+  it('handles single-point (zero-width) intervals', () => {
+    expect(mergeIntervals([[1,1],[2,2],[2,3]])).toEqual([[1,1],[2,3]]);
+  });
+
+  it('does not mutate the input array', () => {
+    const input = [[3,4],[1,2]];
+    mergeIntervals(input);
+    expect(input).toEqual([[3,4],[1,2]]);
+  });
 });
 

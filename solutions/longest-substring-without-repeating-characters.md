@@ -46,6 +46,28 @@ stays all-unique. The largest window seen has size 3.
 - Time: O(n), where n is the length of the string.
 - Space: O(min(n, m)), where m is the size of the character set.
 
+### Why the space is O(min(n, m))
+The only extra memory is the `seen` map — everything else (`maxLen`, `left`, `right`, `char`) is a
+fixed handful of variables, i.e. O(1). So the space cost is however big that map can get.
+
+The map holds **one entry per distinct character** (`char → last index`). When a character repeats,
+`seen.set(char, right)` overwrites its existing entry — it does not add a new one. So the number of
+keys is capped by two things at once:
+
+- **The alphabet, `m`.** You can never have more keys than there are possible characters. With ASCII
+  (128 symbols), the map tops out at 128 entries — even for a 1,000,000-character string.
+- **The string length, `n`.** You also can never have more keys than characters you've actually
+  seen. `'abc'` produces at most 3 keys, no matter how large the alphabet is.
+
+The real size is whichever limit bites first — the **smaller** of the two, hence `min(n, m)`:
+
+- Short string, big alphabet → `n` wins: `'abc'` over ASCII → 3 entries, not 128.
+- Long string, small alphabet → `m` wins: 10,000 chars of just `a`/`b`/`c` → 3 entries, not 10,000.
+
+Note: this implementation never deletes stale keys (it uses `left` to ignore them rather than
+removing them). That doesn't change the bound — distinct-key count is still `min(n, m)` — it just
+means the map may physically hold a few entries that are logically outside the window.
+
 ## Pitfalls & Edge Cases
 - Only move `left` when the repeat is **inside** the window — guard with `seen.get(char) >= left`.
   A stale index from before `left` must be ignored, e.g. `'abba'`: when the second `a` appears its

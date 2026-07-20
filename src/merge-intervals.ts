@@ -38,4 +38,3 @@ const mergeIntervals = (intervals: number[][]): number[][] => {
 };
 
 export default mergeIntervals;
-

@@ -32,5 +32,15 @@ describe('lengthOfLongestSubstring', () => {
   it('returns correct value for string with spaces and symbols', () => {
     expect(lengthOfLongestSubstring('a b!c@d#')).toBe(8);
   });
+
+  // Regression: a repeated character whose previous index is OUTSIDE the current
+  // window must not move `left` backwards. Requires the `>= left` guard.
+  it('returns 2 for "abba"', () => {
+    expect(lengthOfLongestSubstring('abba')).toBe(2);
+  });
+
+  it('returns 5 for "tmmzuxt"', () => {
+    expect(lengthOfLongestSubstring('tmmzuxt')).toBe(5);
+  });
 });
 
